@@ -1,2 +1,16 @@
-# Apex-Legends-Offset-Dumper
-Just a basic Offsets and Netvar dumper for Apex Legends
+Not much to say just a Apex Legends Offsets + Netvar Dumper, it should survive some game updates and also it gave to you almost all you need to update your cheat.
+
+Requeriments:
+
+Go to your Apex Legends folder and rename r5apex.exe to EasyAntiCheat_launcher.exe, i recommend you do a backup of r5apex.exe and EasyAntiCheat_launcher.exe before doing this.
+
+Maybe in the future ill add driver read to avoid this this requeriment, but meanwhile this is enough.
+
+TO-DO
+Add Kernel Mode RMP.
+Improve netvar dumper formating?
+
+Credits/Shouts
+GamerzHacking: Some functions and Netvar tutorial.
+TeamGamerFood: For their Netvar Dumper.
+UC Apex Reversal Thread.

@@ -87,8 +87,8 @@ public:
 	{
 		std::string pre{ xorstr_("\r\n") }; for (auto idx = 0u; idx < indentation; idx++) { pre += std::string{ xorstr_(" ") }; }
 
-		const char* const COMPILED = "Last Update " __DATE__ " at " __TIME__;
-		std::string_view project_name = COMPILED; //+ __DATE__ " @ " __TIME__;
+		const char* const LastUpdate = "Last Update " __DATE__ " at " __TIME__;
+		std::string_view project_name = LastUpdate; //+ __DATE__ " @ " __TIME__;
 
 		fmt::print(pre);
 		fmt::print(fg(fmt::color::lime_green) | fmt::emphasis::underline | fmt::emphasis::bold, project_name.data());

@@ -6,9 +6,14 @@ Requeriments:
 
 - Maybe in the future ill add driver read to avoid this this requeriment, but meanwhile this is enough.
 
+Features
+- Addresses - Offsets Dumper, Including SwapChain.
+- Interfaces Dumper.
+- NetVar Dumper.
+- Fast and lightweight.
+
 TO-DO
 - Add Kernel Mode RMP.
-- Improve netvar dumper formating?
 
 Credits/Shouts
 - GuidedHacking: Some functions and Netvar tutorial.

@@ -4,7 +4,6 @@
 int main()
 {
 	SetConsoleTitle(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.0"));
-	const char* const COMPILED = __DATE__ " @ " __TIME__;
 	printa->project<40>(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.0"));
 
 	__try

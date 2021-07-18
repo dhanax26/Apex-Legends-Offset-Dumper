@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <iomanip>
 #include <thread>
 #include <TlHelp32.h>
@@ -15,6 +16,9 @@
 /*fmt*/
 #include <fmt/core.h>
 #include <fmt/color.h>
+
+/*nlohmann json*/
+#include <json.hpp>
 
 /*Resources*/
 #include "../Resources/xorstr/XorStr.hpp"

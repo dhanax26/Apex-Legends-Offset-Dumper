@@ -18,18 +18,14 @@ public:
 
 	inline printa_c( )
 	{
-		const auto console_handle = GetConsoleWindow( );
-		const auto stream_handle = GetStdHandle( STD_OUTPUT_HANDLE );
+		const auto console_handle = GetConsoleWindow();
+		const auto stream_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-		SetConsoleTitle(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.0"));
+		SetConsoleTitle(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.1"));
 
-		// colours
-		SetConsoleMode( stream_handle, 0x7 );
+		SetConsoleMode(stream_handle, 0x7);
 
-		// transparency
-		//SetLayeredWindowAttributes( console_handle, 0, 230, LWA_ALPHA );
-
-		CloseHandle( console_handle );
+		CloseHandle(console_handle);
 	}
 	inline ~printa_c( ) = default;
 

@@ -10,7 +10,7 @@ namespace Dumper
 	{
 		m_file.open(xorstr_("dumps\\Offsets Dump.txt"));
 
-		Management::LogToFile(m_file, xorstr_("#### Interfaces Dump ####\r\n"));
+		Management::LogToFile(m_file, xorstr_("#### Interfaces Dump ####"));
 
 		printa->title<45>(xorstr_("#### Dumping Interfaces ####"));
 
@@ -66,12 +66,12 @@ namespace Dumper
 		else
 			printa->print<notfound>(xorstr_("VGUISystem\r\n"));
 
-		Management::LogToFile(m_file, xorstr_("[VGUISystem]"), VGUISystem);
+		Management::LogToFile(m_file, xorstr_("[VGUISystem]"), VGUISystem, true);
 	}
 
 	__forceinline void DumpClasses()
 	{
-		Management::LogToFile(m_file, xorstr_("#### Classes Dump ####\r\n"));
+		Management::LogToFile(m_file, xorstr_("#### Classes Dump ####"));
 
 		printa->title<46>(xorstr_("#### Dumping Classes ####"));
 
@@ -154,12 +154,12 @@ namespace Dumper
 		else
 			printa->print<notfound>(xorstr_("CEngine\r\n"));
 
-		Management::LogToFile(m_file, xorstr_("[CEngine]"), CEngine);
+		Management::LogToFile(m_file, xorstr_("[CEngine]"), CEngine, true);
 	}
 
 	__forceinline void DumpOffsets()
 	{
-		Management::LogToFile(m_file, xorstr_("#### Offsets Dump ####\r\n"));
+		Management::LogToFile(m_file, xorstr_("#### Offsets Dump ####"));
 
 		printa->title<46>(xorstr_("#### Dumping Offsets ####"));
 
@@ -242,7 +242,18 @@ namespace Dumper
 		else
 			printa->print<notfound>(xorstr_("LevelName\r\n"));
 
-		Management::LogToFile(m_file, xorstr_("[LevelName]"), LevelName);
+		Management::LogToFile(m_file, xorstr_("[LevelName]"), LevelName, true);
+
+		auto LastVisibleTime = Memory::PatternScanEx(xorstr_("\x8B\x8F\xCC\x1A\x00\x00"), xorstr_("xxxxxx"));//refence: lastVisibleTime
+
+		if (LastVisibleTime)
+		{
+			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(LastVisibleTime));
+			printa->print<found>(xorstr_("LastVisibleTime {}\r\n"), Offset);
+		}
+		else
+			printa->print<notfound>(xorstr_("LastVisibleTime\r\n"));
+
 
 		m_file.close();
 	}

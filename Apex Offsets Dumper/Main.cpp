@@ -3,7 +3,7 @@
 
 int main()
 {
-	printa->project<40>(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.0"));
+	printa->project<40>(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.1"));
 
 	__try
 	{

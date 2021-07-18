@@ -217,10 +217,10 @@ namespace Dumper
 
 		Management::LogToFile(m_file, xorstr_("[ViewRender]"), ViewRender);
 
-		auto ViewMatrix = Memory::FindPattern(xorstr_("48 8D 0D ? ? ? ? 48 8B D3 E8 ? ? ? ? 8B 05 ? ? ? ? 83 C8 08"));
+		auto ViewMatrix = Memory::FindPattern(xorstr_("48 8D 0D ? ? ? ? 48 8B D3 E8 ? ? ? ? 8B 05 ? ? ? ? 83 C8 08"));//Direct Pointer to ViewMatrix, ViewRender + ViewMatrix not needed, just use this address.
 
 		if (ViewMatrix)
-			printa->print<found>(xorstr_("ViewMatrix {}\r\n"), reinterpret_cast<void*>(ViewMatrix));
+			printa->print<found>(xorstr_("ViewMatrix {}\r\n"), reinterpret_cast<void*>(ViewMatrix));//Direct Pointer to ViewMatrix, ViewRender + ViewMatrix not needed, just use this address.
 		else
 			printa->print<notfound>(xorstr_("ViewMatrix\r\n"));
 

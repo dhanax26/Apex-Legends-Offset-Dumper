@@ -19,6 +19,7 @@ Credits/Shouts
 - GuidedHacking: Some functions and Netvar tutorial.
 - TeamGamerFood: For their Netvar Dumper.
 - ex-ref: printa header.
+- Nlohman JSON.
 - UC Apex Reversal Thread.
 
 ![Screenshot_1](https://user-images.githubusercontent.com/48286749/126074929-7c4f4941-ab24-4879-b634-a04ca39b05bd.png)

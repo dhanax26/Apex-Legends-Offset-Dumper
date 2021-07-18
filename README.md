@@ -17,4 +17,4 @@ ex-ref: printa header.
 UC Apex Reversal Thread.
 
 ![Screenshot_1](https://user-images.githubusercontent.com/48286749/126054862-6bdac5d0-c237-4d82-812d-51697d07f2ec.png)
-![Screenshot_2](https://user-images.githubusercontent.com/48286749/126054868-cfc16e3c-2a56-4265-bf95-4ed9d696a83d.png)
+![Screenshot_2](https://user-images.githubusercontent.com/48286749/126067428-5e69e074-770a-439c-b809-8b9a22f7fd3b.png)

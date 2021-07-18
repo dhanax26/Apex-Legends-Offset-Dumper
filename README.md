@@ -7,10 +7,10 @@ Go to your Apex Legends folder and rename r5apex.exe to EasyAntiCheat_launcher.e
 Maybe in the future ill add driver read to avoid this this requeriment, but meanwhile this is enough.
 
 TO-DO
-Add Kernel Mode RMP.
-Improve netvar dumper formating?
+- Add Kernel Mode RMP.
+- Improve netvar dumper formating?
 
-- Credits/Shouts
+Credits/Shouts
 - GuidedHacking: Some functions and Netvar tutorial.
 - TeamGamerFood: For their Netvar Dumper.
 - ex-ref: printa header.

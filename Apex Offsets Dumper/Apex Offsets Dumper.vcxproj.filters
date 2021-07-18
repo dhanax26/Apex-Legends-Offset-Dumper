@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Apex Offsets Dumper">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Resources">
+      <UniqueIdentifier>{a9f0a7b9-8ad7-4b23-bd77-1eea41600a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Dumper">
+      <UniqueIdentifier>{d8e50c1d-c781-49a8-b792-2c8689a7d9a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Globals">
+      <UniqueIdentifier>{0f24fcf8-ca52-4275-a44c-04a05ed4dea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Resources\xorstr">
+      <UniqueIdentifier>{82c50239-06ef-4f94-92cd-17887616eb3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Resources\printa">
+      <UniqueIdentifier>{8ab9de63-26f2-4560-92ac-c130e4171508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Resources\singleton">
+      <UniqueIdentifier>{cf0a9b60-8124-4b6d-9ef6-48230f2dff06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Memory">
+      <UniqueIdentifier>{a2ba02c7-6923-447d-ac71-b81ea6386b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\SDK">
+      <UniqueIdentifier>{34863f22-7b2a-4bcc-8b7a-291b36b2d9d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Dumper\NetVars">
+      <UniqueIdentifier>{23fbe572-18cc-4fc6-9d16-7b1f814f6cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apex Offsets Dumper\Manager">
+      <UniqueIdentifier>{1b717b26-6fd3-4939-bf5e-2be5a15e0c27}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Apex Offsets Dumper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Globals\Globals.hpp">
+      <Filter>Apex Offsets Dumper\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\xorstr\XorStr.hpp">
+      <Filter>Apex Offsets Dumper\Resources\xorstr</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\printa\printa.hpp">
+      <Filter>Apex Offsets Dumper\Resources\printa</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\singleton\singleton.hpp">
+      <Filter>Apex Offsets Dumper\Resources\singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\FindPattern.hpp">
+      <Filter>Apex Offsets Dumper\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Dumper\Dumper.hpp">
+      <Filter>Apex Offsets Dumper\Dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\SDK.hpp">
+      <Filter>Apex Offsets Dumper\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Dumper\NetVars\NetVars.hpp">
+      <Filter>Apex Offsets Dumper\Dumper\NetVars</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\Manager.hpp">
+      <Filter>Apex Offsets Dumper\Manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

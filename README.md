@@ -11,7 +11,7 @@ Add Kernel Mode RMP.
 Improve netvar dumper formating?
 
 Credits/Shouts
-GamerzHacking: Some functions and Netvar tutorial.
+GuidedHacking: Some functions and Netvar tutorial.
 TeamGamerFood: For their Netvar Dumper.
 ex-ref: printa header.
 UC Apex Reversal Thread.

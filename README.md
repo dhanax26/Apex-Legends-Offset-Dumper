@@ -23,5 +23,5 @@ Credits/Shouts
 - JustasMasiulis: XorStr.
 - UC Apex Reversal Thread.
 
-![Screenshot_1](https://user-images.githubusercontent.com/48286749/126074929-7c4f4941-ab24-4879-b634-a04ca39b05bd.png)
-![Screenshot_2](https://user-images.githubusercontent.com/48286749/126074931-4ae9e962-2256-4aaf-a5d9-14a1d0d47104.png)
+![Screenshot_1](https://user-images.githubusercontent.com/48286749/126377215-0d33c721-2dd0-49d8-a300-75f193991db8.png)
+![Screenshot_2](https://user-images.githubusercontent.com/48286749/126377224-2192bb81-6b79-4af9-8122-b9b15836926f.png)

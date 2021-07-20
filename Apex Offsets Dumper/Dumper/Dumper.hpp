@@ -2,6 +2,14 @@
 #include "../Globals/Globals.hpp"
 #include "NetVars/NetVars.hpp"
 
+/* Some interesting stuff
+* Camera Position: F3 0F 10 81 D0 1E 00 00 48 8D 05 ? ? ? ? F3 0F 11 05 ? ? ? ? F3 0F 10 89 D4 1E 00 00 F3 0F 11 0D ? ? ? ? F3 0F 10 81 D8 1E 00 00
+* Camera Angles: F3 0F 10 81 DC 1E 00 00 48 8D 05 ? ? ? ? F3 0F 11 05 ? ? ? ? F3 0F 10 89 E0 1E 00 00 F3 0F 11 0D ? ? ? ? F3 0F 10 81 E4 1E 00 00 F3 0F 11 05 ? ? ? ?
+* StudioHdr: 48 83 B9 38 11 00 00 00
+* TimeScale: 0F 2E C8 7A 02 74 26
+* CreateMove (NotTested): 48 83 EC 28 48 8B 05 ? ? ? ? 48 8D 0D ? ? ? ? 48 8B 90 C8 00 00 00
+*/
+
 namespace Dumper
 {
 	inline std::ofstream m_file;
@@ -236,6 +244,15 @@ namespace Dumper
 
 		Management::LogToFile(m_file, xorstr_("[ClientState]"), ClientState);
 
+		auto SignonState = ClientState + 0x98;//SignonState its just Client State - 0x98
+
+		if (SignonState)
+			printa->print<found>(xorstr_("SignonState {}\r\n"), reinterpret_cast<void*>(SignonState));
+		else
+			printa->print<notfound>(xorstr_("SignonState\r\n"));
+
+		Management::LogToFile(m_file, xorstr_("[SignonState]"), SignonState);
+
 		auto LevelName = Memory::FindPattern(xorstr_("48 8D 05 ? ? ? ? C3 CC CC CC CC CC CC CC 83 3D ? ? ? ? ?"));//refence: dedicated - mp_lobby
 
 		if (LevelName)
@@ -243,7 +260,10 @@ namespace Dumper
 		else
 			printa->print<notfound>(xorstr_("LevelName\r\n"));
 
-		Management::LogToFile(m_file, xorstr_("[LevelName]"), LevelName, true);
+		Management::LogToFile(m_file, xorstr_("[LevelName]"), LevelName);
+
+
+		/******************/
 
 		auto LastVisibleTime = Memory::PatternScanEx(xorstr_("\x8B\x8F\xCC\x1A\x00\x00"), xorstr_("xxxxxx"));//refence: lastVisibleTime
 
@@ -251,20 +271,43 @@ namespace Dumper
 		{
 			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(LastVisibleTime));
 			printa->print<found>(xorstr_("LastVisibleTime {}\r\n"), Offset);
+			Management::LogToFile(m_file, xorstr_("[LastVisibleTime] ") + Offset, 0xF);
 		}
 		else
 			printa->print<notfound>(xorstr_("LastVisibleTime\r\n"));
 
-		//E8 ? ? ? ? 4C 8B 05 ? ? ? ? 48 8B D8 -> 48 83 B9 38 11 00 00 00
-		/*auto StudioHdr = Memory::PatternScanEx(xorstr_("\x48\x83\xB9\x38\x11\x00\x00\x00"), xorstr_("xxxxxxxx"));//refrence: Tried to stream models for anim '%s' on
+		auto GlowEnable = Memory::PatternScanEx(xorstr_("\xC0\x03\x00\x00\x00\x00\x00"), xorstr_("xx?????"));//refence: m_highlightServerContextID
 
-		if (StudioHdr)
+		if (GlowEnable)
 		{
-			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(StudioHdr));
-			printa->print<found>(xorstr_("StudioHdr {}\r\n"), Offset);
+			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(GlowEnable), 5, 0x8);
+			printa->print<found>(xorstr_("GlowEnable {}\r\n"), Offset);
+			Management::LogToFile(m_file, xorstr_("[GlowEnable] ") + Offset, 0xF);
 		}
 		else
-			printa->print<notfound>(xorstr_("StudioHdr\r\n"));*/
+			printa->print<notfound>(xorstr_("GlowEnable\r\n"));
+
+		auto GlowType = Memory::PatternScanEx(xorstr_("\xC0\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xCF"), xorstr_("xx??????????????????????????x"));//refence: m_highlightFunctionBits
+
+		if (GlowType)
+		{
+			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(GlowType), 5);
+			printa->print<found>(xorstr_("GlowType {}\r\n"), Offset);
+			Management::LogToFile(m_file, xorstr_("[GlowType] ") + Offset, 0xF);
+		}
+		else
+			printa->print<notfound>(xorstr_("GlowType\r\n"));
+
+		auto GlowColor = Memory::PatternScanEx(xorstr_("\xB8\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xC5"), xorstr_("xx???????????????????????????x"));//refence: m_highlightParams
+
+		if (GlowColor)
+		{
+			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(GlowColor), 5, 0x18);
+			printa->print<found>(xorstr_("GlowColor {}\r\n"), Offset);
+			Management::LogToFile(m_file, xorstr_("[GlowColor] ") + Offset, 0xF, true);
+		}
+		else
+			printa->print<notfound>(xorstr_("GlowColor\r\n"));
 
 		m_file.close();
 	}

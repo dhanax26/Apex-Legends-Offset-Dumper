@@ -21,7 +21,7 @@ public:
 		const auto console_handle = GetConsoleWindow();
 		const auto stream_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-		SetConsoleTitle(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.1"));
+		SetConsoleTitle(xorstr_("Apex Legends Dumper by dhanax26 - v1.0.2"));
 
 		SetConsoleMode(stream_handle, 0x7);
 

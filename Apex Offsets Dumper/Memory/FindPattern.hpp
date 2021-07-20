@@ -5,28 +5,28 @@ namespace Memory
 	inline HANDLE hProcess;
 	inline uint64_t moduleBase, modulesize;
 	inline int found, missed = 0;
-	inline MODULEENTRY32 modEntry;
+	inline MODULEENTRY32 ModuleEntry;
 
 	__forceinline void GetModule(const char* modName, DWORD procId) 
 	{
-		HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procId);
+		HANDLE hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procId);
 
-		if (hSnap != INVALID_HANDLE_VALUE) 
+		if (hSnapShot != INVALID_HANDLE_VALUE)
 		{
-			modEntry.dwSize = sizeof(modEntry);
-			if (Module32First(hSnap, &modEntry)) 
+			ModuleEntry.dwSize = sizeof(ModuleEntry);
+			if (Module32First(hSnapShot, &ModuleEntry))
 			{
 				do 
 				{
-					if (!strcmp(modEntry.szModule, modName)) 
+					if (!strcmp(ModuleEntry.szModule, modName))
 					{
-						CloseHandle(hSnap);
-						modulesize = modEntry.modBaseSize;
-						moduleBase = (uint64_t)modEntry.modBaseAddr;
+						CloseHandle(hSnapShot);
+						modulesize = ModuleEntry.modBaseSize;
+						moduleBase = reinterpret_cast<uint64_t>(ModuleEntry.modBaseAddr);
 						return;
 					}
 				} 
-				while (Module32Next(hSnap, &modEntry));
+				while (Module32Next(hSnapShot, &ModuleEntry));
 			}
 		}
 	}
@@ -44,7 +44,7 @@ namespace Memory
 		return buffer;
 	}
 
-	__forceinline std::string GetOffset(uint64_t Address, int delimiter = 6)//Shit way of doing it
+	__forceinline std::string GetOffset(uint64_t Address, int delimiter = 6, int offset = 0)//Shit way of doing it
 	{
 		auto integerbuffer = 0;
 		ReadProcessMemory(hProcess, (void*)Address, &integerbuffer, sizeof(int), NULL);
@@ -53,7 +53,7 @@ namespace Memory
 			return xorstr_("");
 
 		std::stringstream conver;
-		conver << xorstr_("0x") << std::hex << std::uppercase << integerbuffer;
+		conver << xorstr_("0x") << std::hex << std::uppercase << integerbuffer + offset;
 
 		auto Offset = conver.str();
 
@@ -215,17 +215,22 @@ namespace Memory
 
 		if (hWindow)
 		{
-			DWORD dwPID; GetWindowThreadProcessId(hWindow, &dwPID);
+			DWORD ProcessId = 0x0;
 
-			if (dwPID)
+			GetWindowThreadProcessId(hWindow, &ProcessId);
+
+			if (ProcessId)
 			{
-				hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, dwPID);
+				hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, ProcessId);
 
 				if (hProcess)
-					GetModule(xorstr_("EasyAntiCheat_launcher.exe"), dwPID);
+					GetModule(xorstr_("EasyAntiCheat_launcher.exe"), ProcessId);
 
 				if (moduleBase)
+				{
+					Management::CreateDataFolder();
 					return true;
+				}
 			}
 		}
 		return false;

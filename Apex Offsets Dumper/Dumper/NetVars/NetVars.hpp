@@ -20,18 +20,18 @@ namespace NetVars
 
 			std::string pPropName = pRecvProp->GetPropName();
 
-			if (pPropName.empty() || pPropName.find(xorstr_("m_")) > 0)
+			if (pPropName.empty()|| pPropName.find(xorstr_("m_")) > 0)
 				continue;
 
 			std::stringstream toHex;
 			toHex << xorstr_("[0x") << std::hex << std::uppercase << pRecvProp->GetOffset() << xorstr_("]");
 
-			netjson = 
+			netjson =
 			{
 				{pRecv->GetRecvName(),
 				{
 					{pPropName, toHex.str()}
-				}}
+				}},
 			};
 
 			m_file << netjson << std::endl;

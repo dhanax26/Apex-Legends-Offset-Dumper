@@ -256,7 +256,7 @@ namespace Dumper
 			printa->print<notfound>(xorstr_("LastVisibleTime\r\n"));
 
 		//E8 ? ? ? ? 4C 8B 05 ? ? ? ? 48 8B D8 -> 48 83 B9 38 11 00 00 00
-		auto StudioHdr = Memory::PatternScanEx(xorstr_("\x48\x83\xB9\x38\x11\x00\x00\x00"), xorstr_("xxxxxxxx"));//refrence: Tried to stream models for anim '%s' on
+		/*auto StudioHdr = Memory::PatternScanEx(xorstr_("\x48\x83\xB9\x38\x11\x00\x00\x00"), xorstr_("xxxxxxxx"));//refrence: Tried to stream models for anim '%s' on
 
 		if (StudioHdr)
 		{
@@ -264,7 +264,7 @@ namespace Dumper
 			printa->print<found>(xorstr_("StudioHdr {}\r\n"), Offset);
 		}
 		else
-			printa->print<notfound>(xorstr_("StudioHdr\r\n"));
+			printa->print<notfound>(xorstr_("StudioHdr\r\n"));*/
 
 		m_file.close();
 	}

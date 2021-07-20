@@ -1,30 +1,30 @@
 #### Interfaces Dump ####
 
-[ClientRenderTargets] 0x1f55878
-[IBaseClientDLL] 0x18f8080
-[IClientEntityList] 0x1f55048
-[CPrediction] 0x1f55050
-[IVModelRender] 0x11e4b90
-[VGUISystem] 0x1ef45c0
+[ClientRenderTargets] 0x1f56af8
+[IBaseClientDLL] 0x18f92e0
+[IClientEntityList] 0x1f562c8
+[CPrediction] 0x1f562d0
+[IVModelRender] 0x11e5cf0
+[VGUISystem] 0x1ef5820
 #### Classes Dump ####
 
-[IVRenderView] 0x41e3580
-[IVDebugOverlay] 0x421cf88
-[IVModelInfoClient] 0x41e3590
-[IVEngineClient] 0x11cae40
-[IVEngineTrace] 0x41e3598
-[INetworkStringTable] 0x41e35a8
-[CNetworkU64Table] 0x41e35a8
-[CInput] 0x1caa3f0
-[CEngine] 0x11e5f90
+[IVRenderView] 0x41e4800
+[IVDebugOverlay] 0x421e208
+[IVModelInfoClient] 0x41e4810
+[IVEngineClient] 0x11cbe40
+[IVEngineTrace] 0x41e4818
+[INetworkStringTable] 0x41e4828
+[CNetworkU64Table] 0x41e4828
+[CInput] 0x1cab650
+[CEngine] 0x11e70f0
 #### Offsets Dump ####
 
-[ISwapChain] 0x82ed198
-[cl_entitylist] 0x1911448
-[LocalPlayer] 0x1cc0ce8
-[GlobalVars] 0x12ae340
-[NameList] 0x8382450
-[ViewRender] 0x41e3588
-[ViewMatrix] 0x134aff0
-[ClientState] 0x12ae630
-[LevelName] 0x12ae7e0
+[ISwapChain] 0x82ee418
+[cl_entitylist] 0x19126a8
+[LocalPlayer] 0x1cc1f48
+[GlobalVars] 0x12af540
+[NameList] 0x83836d0
+[ViewRender] 0x41e4808
+[ViewMatrix] 0x1cef8d0
+[ClientState] 0x12af830
+[LevelName] 0x12af9e0

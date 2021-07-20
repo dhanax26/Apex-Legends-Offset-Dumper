@@ -217,10 +217,11 @@ namespace Dumper
 
 		Management::LogToFile(m_file, xorstr_("[ViewRender]"), ViewRender);
 
-		auto ViewMatrix = Memory::FindPattern(xorstr_("48 8D 0D ? ? ? ? 48 8B D3 E8 ? ? ? ? 8B 05 ? ? ? ? 83 C8 08"));
+		//48 8D 1D ? ? ? ? 66 0F 1F 84 00 00 00 00 00 48 8B 01 48 0F BE F7 49 3B C6 0F 85 ? ? ? ? 48 83 BC F1 D0 3B 1B 00 00 0F 95 C0 84 C0 74 34 48 8B 01 49 3B C6 0F 85 ? ? ? ? 48 8B 84 F1 D0 3B 1B 00 0F 10 00
+		auto ViewMatrix = Memory::FindPattern(xorstr_("48 8D 1D ? ? ? ? 66 0F 1F 84 00 00 00 00 00 48 8B 01 48 0F BE F7 49 3B C6 0F 85"));
 
 		if (ViewMatrix)
-			printa->print<found>(xorstr_("ViewMatrix {}\r\n"), reinterpret_cast<void*>(ViewMatrix));
+			printa->print<found>(xorstr_("ViewMatrix {}\r\n"), reinterpret_cast<void*>(ViewMatrix));//How to read: auto viewmatrix = Read<DirectX::XMFLOAT4X4>(ModuleBase + 0x1cef8d0);
 		else
 			printa->print<notfound>(xorstr_("ViewMatrix\r\n"));
 
@@ -254,6 +255,16 @@ namespace Dumper
 		else
 			printa->print<notfound>(xorstr_("LastVisibleTime\r\n"));
 
+		//E8 ? ? ? ? 4C 8B 05 ? ? ? ? 48 8B D8 -> 48 83 B9 38 11 00 00 00
+		auto StudioHdr = Memory::PatternScanEx(xorstr_("\x48\x83\xB9\x38\x11\x00\x00\x00"), xorstr_("xxxxxxxx"));//refrence: Tried to stream models for anim '%s' on
+
+		if (StudioHdr)
+		{
+			auto Offset = Memory::GetOffset(reinterpret_cast<uint64_t>(StudioHdr));
+			printa->print<found>(xorstr_("StudioHdr {}\r\n"), Offset);
+		}
+		else
+			printa->print<notfound>(xorstr_("StudioHdr\r\n"));
 
 		m_file.close();
 	}

@@ -265,7 +265,7 @@ namespace Dumper
 
 		/******************/
 
-		auto LastVisibleTime = Memory::PatternScanEx(xorstr_("\x8B\x8F\xCC\x1A\x00\x00"), xorstr_("xxxxxx"));//refence: lastVisibleTime
+		auto LastVisibleTime = Memory::PatternScanEx(xorstr_("\x8B\x8F\xD4\x1A\x00\x00"), xorstr_("xxxxxx"));//refence: lastVisibleTime
 
 		if (LastVisibleTime)
 		{
